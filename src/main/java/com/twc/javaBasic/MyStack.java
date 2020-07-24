@@ -1,5 +1,7 @@
 package com.twc.javaBasic;
 
+import java.util.Arrays;
+
 @SuppressWarnings({"unused", "FieldCanBeLocal"})
 public class MyStack {
     private int[] storage;
@@ -24,7 +26,8 @@ public class MyStack {
 
         // TODO: Please push the value into the storage here.
         // <--start
-
+        storage[count] = value;
+        count += 1;
         // --end-->
     }
 
@@ -37,7 +40,8 @@ public class MyStack {
         //  IMPORTANT: You SHOULD NOT USE COLLECTIONS (such as List<T>) OTHER THAN ARRAY.
         //
         // <--start
-
+        capacity = newCapacity;
+        storage = Arrays.copyOf(storage, newCapacity);
         // --end-->
     }
 
@@ -57,9 +61,12 @@ public class MyStack {
         //  Please pop one element from the array. You should update the `count` field
         //  as well.
         // <--start
-
+        // Since the instruction did not have rule for capacity property, so I choose to not change capacity.
+        int popRes = storage[count-1];
+        storage[count-1] = 0;
+        count -= 1;
+        return popRes;
         // --end-->
 
-        throw new UnsupportedOperationException("Stack is empty.");
     }
 }
